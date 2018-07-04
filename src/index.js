@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter,Route,Link} from 'react-router-dom';
+import {BrowserRouter,Route,Link,NavLink,Switch} from 'react-router-dom';
 
 //Stylesheet
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 //Components
 import Home from './components/home';
@@ -15,11 +16,16 @@ import PostItem from './components/post_item';
 
 const App=()=>{
     return (
+        //You can use also:
+        //  - <HashRouter> for http://domain.com/#/something
+        //  - <MemoryRouter> for only http://domain.com and all others root will be kept at memory
+
+        //Navlink take as a parameter a preferable activeStyle or activeClassName
         <BrowserRouter>
             <div className="container-fluid">
                 <nav className="nav">
                     <Link to="/" className="py-2 pr-2 pl-0 text-muted">Home</Link>
-                    <Link to="/posts" className="p-2 text-muted">Posts</Link>
+                    <NavLink to="/posts" className="p-2 text-muted" activeClassName="selected">Posts</NavLink>
                     <Link to={{
                             pathname: '/profile',
                             hash:'#alkal',
@@ -28,10 +34,12 @@ const App=()=>{
                 </nav>
                 <main>
                     <hr className="py-0 mt-0"/>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/posts" exact component={Posts} />
-                    <Route path="/posts/:id/:username" component={PostItem} />
-                    <Route path="/profile" component={Profile} />
+                    <Switch>
+                        <Route path="/posts/:id/:username" component={PostItem} />
+                        <Route path="/posts" component={Posts} />
+                        <Route path="/profile" component={Profile} />
+                        <Route path="/" component={Home} />
+                    </Switch>
                 </main>
             </div>
         </BrowserRouter>

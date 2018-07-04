@@ -1,0 +1,7 @@
+.header{text-align: center;color:#000;}
+.header-empty .jumbotron{background-color: #f2f2f2;}
+.header-fill .jumbotron{background-color:#dedede;}
+.header>h1{margin:0 0 6px;}
+.list-group-item:first-child {
+    border-top: 0;
+}

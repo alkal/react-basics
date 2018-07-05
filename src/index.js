@@ -11,6 +11,7 @@ import Home from './components/home';
 import Posts from './components/posts';
 import Profile from './components/profile';
 import PostItem from './components/post_item';
+import Lifecycle from './components/lifecycle';
 
 
 
@@ -31,6 +32,7 @@ const App=()=>{
                             hash:'#alkal',
                             search:'?profile=true'
                     }} className="p-2 text-muted">Profile</Link>
+                    <NavLink to="/lifecycle" className="p-2 text-muted">Lifecycle</NavLink>
                 </nav>
                 <main>
                     <hr className="py-0 mt-0"/>
@@ -38,7 +40,9 @@ const App=()=>{
                         <Route path="/posts/:id/:username" component={PostItem} />
                         <Route path="/posts" component={Posts} />
                         <Route path="/profile" component={Profile} />
-                        <Route path="/" component={Home} />
+                        <Route path="/lifecycle" component={Lifecycle} />
+                        <Route path="/" exact component={Home} />
+                        <Route component={Profile} /> {/* fallback when page not found */}
                     </Switch>
                 </main>
             </div>

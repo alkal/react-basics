@@ -8,7 +8,7 @@ const PostItem = (props) => {
         <div>
             <h2 className="h4">
                 Post Details {props.match.params.id}
-                <br/><small class="text-muted">Author: {props.match.params.username}</small>
+                <br/><small className="text-muted">Author: {props.match.params.username}</small>
             </h2>
         </div>
     )
